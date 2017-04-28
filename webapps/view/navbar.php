@@ -4,7 +4,10 @@
      <a class="navbar-brand" href="index.php?nav=home">BajuBu.com</a>
    </div>
    <ul class="nav navbar-nav">
-     <!-- <li><a href="#">Blog</a></li> -->
+     <li class=<?php echo isset($_GET['nav']) ? ($_GET['nav'] == 'catalog' ?  "active" : "") : (""); ?>>
+       <a href="index.php?nav=catalog">Katalog Baju</a>
+     </li>
+     <li><a href="blog">Blog</a></li>
    <form class="navbar-form navbar-left">
      <div class="form-group">
        <input type="text" class="form-control" placeholder="Search">

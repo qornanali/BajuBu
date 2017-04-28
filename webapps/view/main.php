@@ -1,26 +1,35 @@
-<?php
-include 'navbar.php'
-?>
-
-<div class="container">
+<head>
+<title>
   <?php
   $redirect = 0;
     if(isset($_GET['nav'])){
-      if(isset($_GET['view'])){
-        // if($_GET['view'] == "detail"){
-        //   $redirect = 3;
-        // }else if($_GET['view'] == "form"){
-        //   $redirect = 4;
-        // }
-      }else if($_GET['nav'] == "login"){
+      if($_GET['nav'] == "login"){
         $redirect = 1;
+          $title = "BajuBu - Masuk";
       }else if($_GET['nav'] == "catalog"){
-        $redirect = 2;
+        if(isset($_GET['id'])){
+          $redirect = 4;
+        }else {
+          $redirect = 2;
+        }
+        $title = "BajuBu - Katalog Baju";
       }else if($_GET['nav'] == "cart"){
-        $redirect = 2;
+        $redirect = 3;
+          $title = "BajuBu - keranjangku";
+      }else{
+        $title = "BajuBu - Home";
       }
+      echo $title;
     }
-
+    ?>
+</title/>
+</ehad>
+<?php
+include 'navbar.php'
+?>
+<body>
+<div class="container">
+  <?php
     switch($redirect){
       case 1 :
       include 'login.php';
@@ -31,10 +40,17 @@ include 'navbar.php'
       case 3 :
       include "cart.php";
       break;
+      case 4 :
+      include "catalog_detail.php";
+      break;
       default :
       include 'home.php';
       break;
     }
-
     ?>
 </div>
+<br><br><br><br>
+<?php
+include 'footer.php'
+    ?>
+</body>
